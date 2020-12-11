@@ -2,9 +2,12 @@ var sender_input_queue = [];
 var receiver_input_queue = [];
 
 function send (from, data) {
+    // in this simple example, "sender"'s output is always piped to "receiver"'s input
+    // and "receiver"'s ouput is always piped to "sender"'s input
+    //  (but, in this example, "receiver" doesn't send any outputs)
     if (from == "sender") {
-	receiver_input_queue.push (data);  // in this simple example, sender's output is always piped to receiver's input
-    } else if (from == "receiver") {
+	receiver_input_queue.push (data);
+    } else if (from == "receiver") { // this branch is never taken, in this example
 	sender_input_queue.push (data);  
     } else {
 	fail ();
